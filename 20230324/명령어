@@ -1,0 +1,53 @@
+docker run -d -it --name ubuntu1 ubuntu:18.04
+docker run -d -it --name ubuntu2 ubuntu:18.04
+
+run을 하게 되면
+
+pull 명령어와 create start 명령어를 동시에 수행하게 됩니다.
+# docker container 이름을 mynode로 설정하고 포트 3000번 접속시에
+# node 서버가 응답 하도록 하는 명령어
+docker run -d -it --name mynode -p 3000:3000 node
+
+docker rm ubuntu1
+
+git add . 
+git commit -m "asdf"
+git push origin masdjfnqlwekrn
+
+# node image 가져와라
+docker pull node
+# node image container 생성해라
+docker create --name node
+
+근데 평균적으로 따로 두번 명령어를 적을 필요가 없기 때문에
+run 명령어를 많이 씁니다.
+
+docker rmi mariadb
+
+
+#리눅스 명령어
+# 폴더 내용 보기
+ls 
+# 현재 디렉토리 보기
+pwd
+# aaa 폴더 만들기
+mkdir aaa
+# cat index.js
+index.js 파일 내용보기
+# cat > index.js
+입력한 내용 index.js 에 작성하기
+ctrl + d
+
+# index.js 파일 실행하기
+node index.js
+
+# node_modelues
+mv index.js aaa
+
+# aaa 폴더로 이동해라 
+cd aaa
+
+# package.json 파일 생성
+npm init --yes
+# express 모듈 설치
+npm i express
