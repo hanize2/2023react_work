@@ -27,4 +27,27 @@ User.sync({ force: true })
   .then(() => console.log('User table created!'))
   .catch(err => console.error(err));
 
-module.exports = User;
+const Board = sequelize.define('board', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  title: {
+    type: Sequelize.STRING(50),
+    allowNull: false
+  },
+  content: {
+    type: Sequelize.STRING(50),
+    allowNull: false,
+  },
+  writer: {
+    type: Sequelize.STRING(50),
+    allowNull: false
+  },
+});
+Board.sync({ force: true })
+  .then(() => console.log('board table created!'))
+  .catch(err => console.error(err));
+
+module.exports = {User,Board};
