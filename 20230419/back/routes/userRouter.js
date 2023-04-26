@@ -21,9 +21,11 @@ router.post('/insert', async(req, res) => {
         });
     }catch(e){
         console.log(e);
+        res.status(500).json({message:"db insert 실패"});
     }finally{
-        res.send('insert');
     }
+    res.status(200).json({message:'db insert 성공'});
+
 });
 
 module.exports = router;
