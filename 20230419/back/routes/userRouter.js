@@ -1,32 +1,48 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const {User} = require('../db.js');
 
-const {User} = require("../db.js");
-
-router.get('/list/:id?', async(req, res) => {
-    console.log(req.params.id);
-    const users= await User.findAll();
-    res.json(users);
+router.get('/count', async (req, res) => {
+  const count = await User.count().catch(e => {
+    console.log(e);
+  });
+  res.json(count);
 });
 
-router.post('/insert', async(req, res) => {
-    console.log("req.body.email",req.body.email);
-    console.log("req.body.password",req.body.password);
-    console.log("req.body.name",req.body.name);
-    try{
-        await User.create({
-            name : req.body.name,
-            email : req.body.email,
-            password : req.body.password
-        })
-        .catch(e=>{console.log(e);});
-    }catch(e){
-        console.log(e);
-        res.status(500).json({message:"db insert 실패"});
-    }finally{
-    }
-    res.status(200).json({message:'db insert 성공'});
+router.get('/list/:page?', async (req, res) => {
+  console.log(req.params.page);
+  const limit = 5;
+  const offset = (parseInt(req.params.page) - 1) * limit;
+  const users = await User.findAll({
+    limit,
+    offset,
+    order: [['id', 'desc']],
+  });
+  res.json(users);
+});
 
+router.post('/insert', async (req, res) => {
+  const {name, email, password} = req.body;
+  let hash = await bcrypt.hash(password, 12);
+  try {
+    await User.create({
+      name: name,
+      email: email,
+      password: hash,
+    })
+      .then(() => {
+        return res.status(200).json({message: 'db insert 성공'});
+      })
+      .catch(e => {
+        console.log(e);
+        return res.status(500).json({message: 'db insert 실패'});
+      });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({message: 'db insert 실패'});
+  } finally {
+  }
 });
 
 module.exports = router;

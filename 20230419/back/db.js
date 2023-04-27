@@ -19,11 +19,11 @@ const User = sequelize.define('user', {
     unique: true
   },
   password: {
-    type: Sequelize.STRING(50),
+    type: Sequelize.STRING(255),
     allowNull: false
   },
 });
-User.sync({ force: true })
+User.sync({ force: false })
   .then(() => console.log('User table created!'))
   .catch(err => console.error(err));
 
@@ -46,7 +46,7 @@ const Board = sequelize.define('board', {
     allowNull: false
   },
 });
-Board.sync({ force: true })
+Board.sync({ force: false })
   .then(() => console.log('board table created!'))
   .catch(err => console.error(err));
 
