@@ -1,13 +1,13 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { selectContext } from "../App";
 
 const UserSelect = () => {
     const {ok,setOk} = useContext(selectContext);
-    console.log(`ok ${ok}`);
     const [users,setUsers] = useState([]);
     useEffect(
         ()=>{
+            console.log("useEffect 사용...");
             let myTimer = null;
             axios.get(`http://localhost:9000/users/list`)
             .then(result=>{
@@ -31,4 +31,4 @@ const UserSelect = () => {
     );
 }
  
-export default UserSelect;
+export default memo(UserSelect);
