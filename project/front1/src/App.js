@@ -8,12 +8,13 @@ import FreeBoard from './components/FreeBoard';
 export const selectContext = createContext();
 
 function App() {
-  const [ok, setOk] = useState('');
+  const [ok, setOk] = useState('User 추가해주세요');
   return (
     <>
       <MyNav/>
       <selectContext.Provider value={{ok, setOk}}>
         <Routes>
+          <Route path='/' element={<h1>메뉴를 클릭해주세요</h1>}></Route>
           <Route path='user' element={<User/>}></Route>
           <Route path='freeboard' element={<FreeBoard/>}></Route>
         </Routes>

@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, {memo, useContext, useState} from 'react';
 import {selectContext} from '../App';
 
-
 const UserInsert = () => {
     const {ok, setOk} = useContext(selectContext);
 

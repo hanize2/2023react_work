@@ -1,12 +1,14 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const {User} = require("../db.js");
+const {User} = require('../db.js');
 
-router.get('/list/:id?', async(req, res) => {
-    console.log(req.params.id);
-    const users= await User.findAll();
-    res.json(users);
+router.get('/list/:id?', async (req, res) => {
+  console.log(req.params.id);
+  const users = await User.findAll({
+    order: [['id', 'DESC']],
+  });
+  res.json(users);
 });
 
 router.post('/insert', async(req, res) => {
