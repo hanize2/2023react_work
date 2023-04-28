@@ -19,14 +19,15 @@ router.post('/insert', async(req, res) => {
             email : req.body.email,
             password : req.body.password
         })
-        .catch(e=>{console.log(e);});
+        .then(e=>{
+            return res.status(200).json({message:'db insert 성공'});
+        })
+        .catch(e=>{
+            return res.status(500).json({message:'db email 중복'});
+        });
     }catch(e){
         console.log(e);
-        res.status(500).json({message:"db insert 실패"});
-    }finally{
     }
-    res.status(200).json({message:'db insert 성공'});
-
 });
 
 module.exports = router;

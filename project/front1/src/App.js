@@ -1,9 +1,14 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 import axios from 'axios';
 import UserSelect from './components/UserSelect';
 
+export const selectContext = createContext();
+
 function App() {
+
+  const [ok,setOk] = useState("");
+
   const [email,setEmail] = useState("");
   const emailinput = (e)=>{ setEmail(e.target.value); }
 
@@ -18,28 +23,39 @@ function App() {
       email,name,password
     }).then(()=>{
       setEmail(""); setName(""); setPassword("");
-    }).catch(e=>{ console.log(e) });
+      setOk((result)=>{
+        if(result === 'select 완료' || result ==='')
+          return '등록되었습니다.';
+        else
+          return result+'!';
+      });
+    }).catch(e=>{ 
+      setOk('email 중복입니다.등록실패');
+     });
   }
   return (
-    <div className="App">
-      <div><h1>insert</h1></div>
-      <div>
+    <selectContext.Provider value={{ok,setOk}}>
+      <div className="App">
+        <div><h1>insert</h1></div>
         <div>
-          <label>email</label>
-          <input type='text' onChange={emailinput} value={email}/>
+          <div>
+            <label>email</label>
+            <input type='text' onChange={emailinput} value={email}/>
+          </div>
+          <div>
+            <label>name</label>
+            <input type='text' onChange={nameInput} value={name}/>
+          </div>
+          <div>
+            <label>password</label>
+            <input type='text' onChange={passwordInput} value={password}/>
+          </div>
+          <button onClick={dosave}>insert</button>
+          <h1>{ok}</h1>
         </div>
-        <div>
-          <label>name</label>
-          <input type='text' onChange={nameInput} value={name}/>
-        </div>
-        <div>
-          <label>password</label>
-          <input type='text' onChange={passwordInput} value={password}/>
-        </div>
-        <button onClick={dosave}>insert</button>
+        <UserSelect></UserSelect>
       </div>
-      <UserSelect email={email}></UserSelect>
-    </div>
+    </selectContext.Provider>
   );
 }
 

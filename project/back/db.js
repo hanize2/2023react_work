@@ -23,9 +23,7 @@ const User = sequelize.define('user', {
     allowNull: false
   },
 });
-User.sync({ force: true })
-  .then(() => console.log('User table created!'))
-  .catch(err => console.error(err));
+
 
 const Board = sequelize.define('board', {
   id: {
@@ -46,8 +44,13 @@ const Board = sequelize.define('board', {
     allowNull: false
   },
 });
+User.hasMany(Board);
+Board.belongsTo(User);
 Board.sync({ force: true })
   .then(() => console.log('board table created!'))
   .catch(err => console.error(err));
 
+User.sync({ force: true })
+  .then(() => console.log('User table created!'))
+  .catch(err => console.error(err));
 module.exports = {User,Board};
