@@ -49,7 +49,7 @@ const UserInsert = () => {
       <div>
         <div>
           <label>email</label>
-          <input style={{display:'block',width:"50%",height:"1.7rem"}} type="text" onChange={emailinput} value={email} />
+          <input style={{display:'block',width:"50%",height:"1.7rem"}} type="email" onChange={emailinput} value={email} />
         </div>
         <div>
           <label>name</label>
@@ -57,9 +57,9 @@ const UserInsert = () => {
         </div>
         <div>
           <label>password</label>
-          <input style={{display:'block',width:"50%",height:"1.7rem"}} type="text" onChange={passwordInput} value={password} />
+          <input style={{display:'block',width:"50%",height:"1.7rem"}} type="password" onChange={passwordInput} value={password} />
         </div>
-        <button style={{padding:".5rem",marginTop:".5rem"}} onClick={dosave}>insert</button>
+        <button style={{padding:".5rem",marginTop:".5rem",fontSize:"1.2rem"}} onClick={dosave}>insert</button>
         <h1>{ok}</h1>
       </div>
     </>
