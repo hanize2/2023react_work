@@ -26,28 +26,26 @@ const UserSelect = () => {
   return (
     <div>
       <h1>select</h1>
-      <p>
-        <table style={{border:"1px solid black",width:"100%"}}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>password</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map(user => {
-              return (
-                <tr key={user.id} style={{textAlign:"center"}}>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.password}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </p>
+      <table style={{border: '1px solid black', width: '100%'}}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>password</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => {
+            return (
+              <tr key={user.id} style={{textAlign: 'center'}}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.password}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
