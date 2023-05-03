@@ -4,6 +4,7 @@ import MyNav from './components/MyNav';
 import User from './components/User';
 import {Route, Routes} from 'react-router-dom';
 import FreeBoard from './components/FreeBoard';
+import Login from './components/Login';
 
 export const selectContext = createContext();
 
@@ -45,6 +46,7 @@ function App() {
           ></Route>
           <Route path="user" element={<User />}></Route>
           <Route path="freeboard" element={<FreeBoard />}></Route>
+          <Route path="login" element={<Login />}></Route>
         </Routes>
       </selectContext.Provider>
     </>

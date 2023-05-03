@@ -40,7 +40,7 @@ const UserSelect = () => {
               <tr key={user.id} style={{textAlign: 'center'}}>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.password}</td>
+                <td>*****</td>
               </tr>
             );
           })}
