@@ -1,26 +1,26 @@
-const { Sequelize } = require('sequelize');
+const {Sequelize} = require('sequelize');
 const sequelize = new Sequelize('3_1', 'root', '1234', {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mysql',
 });
 const User = sequelize.define('user', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   },
   name: {
     type: Sequelize.STRING(50),
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: Sequelize.STRING(50),
     allowNull: false,
-    unique: true
+    unique: true,
   },
   password: {
     type: Sequelize.STRING(50),
-    allowNull: false
+    allowNull: false,
   },
 });
 
@@ -44,8 +44,10 @@ const Board = sequelize.define('board', {
     allowNull: false
   },
 });
+
 User.hasMany(Board);
 Board.belongsTo(User);
+
 Board.sync({ force: true })
   .then(() => console.log('board table created!'))
   .catch(err => console.error(err));
@@ -53,4 +55,5 @@ Board.sync({ force: true })
 User.sync({ force: true })
   .then(() => console.log('User table created!'))
   .catch(err => console.error(err));
+  
 module.exports = {User,Board};

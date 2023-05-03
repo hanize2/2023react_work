@@ -20,8 +20,8 @@ const MyNav = () => {
   return (
     <div>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <h1 style={{cursor:"pointer",paddingLeft:'.8rem'}} onClick={()=>{navigate('/')}}>HOME</h1>
-        <h1 style={{cursor: 'pointer', paddingRight: '.8rem'}} onClick={menu}>
+        <h1 style={{cursor:"pointer",padding:'.5rem'}} onClick={()=>{navigate('/')}}>HOME</h1>
+        <h1 style={{cursor: 'pointer',padding:'.5rem'}} onClick={menu}>
           메뉴
         </h1>
       </div>
