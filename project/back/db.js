@@ -52,7 +52,7 @@ Board.sync({ force: false })
   .then(() => console.log('board table created!'))
   .catch(err => console.error(err));
 
-User.sync({ force: true })
+User.sync({ force: false })
   .then(() => console.log('User table created!'))
   .catch(err => console.error(err));
   
