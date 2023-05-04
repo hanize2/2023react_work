@@ -1,4 +1,5 @@
-import { useState } from "react";
+import {useState} from 'react';
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,14 @@ const Login = () => {
   const passwordInput = e => {
     setPassword(e.target.value);
   };
+
+  const signin = () => {
+    axios.post(`http://localhost:9000/auth/signin`,{
+      email,
+      password
+    })
+  };
+  
   return (
     <div style={{padding: '1rem'}}>
       <h1>Login</h1>
@@ -30,6 +39,12 @@ const Login = () => {
           value={password}
         />
       </div>
+      <button
+        onClick={signin}
+        style={{padding: '0.5rem', marginTop: '0.5rem', fontSize: '1.2rem'}}
+      >
+        SIGNIN
+      </button>
     </div>
   );
 };
