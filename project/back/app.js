@@ -12,7 +12,7 @@ const authRouter = require("./routes/authRouter");
 const userRouter = require("./routes/userRouter");
 const boardRouter = require("./routes/boardRouter");
 
-app.use("/auth", authRouter);
+app.use("/auth",authRouter);
 app.use("/users",userRouter);
 app.use("/board",boardRouter);
 
