@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcriypt = require('bcrypt');
 
 const {User} = require('../db.js');
 
@@ -13,11 +14,12 @@ router.get('/list/:id?', async (req, res) => {
 
 router.post('/insert', async(req, res) => {
     const {email,password,name} = req.body;
+    const bcryptpw = await bcriypt.hash(password,12);
     try{
         await User.create({
             name,
             email,
-            password
+            password:bcryptpw
         })
         .then(e=>{
             return res.status(200).json({message:'db insert 성공'});
