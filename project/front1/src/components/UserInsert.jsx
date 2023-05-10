@@ -28,14 +28,14 @@ const UserInsert = () => {
         password,
       })
       .then(() => {
-        setEmail('');
-        setName('');
-        setPassword('');
         setOk(result => {
           if (result === 'select 완료' || result === '')
             return '등록되었습니다.';
           else return result + '!';
         });
+        setEmail('');
+        setName('');
+        setPassword('');
       })
       .catch(e => {
         setOk('email 중복입니다.등록실패');
